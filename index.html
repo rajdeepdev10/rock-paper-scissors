@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+
+      let playerScore = 0
+      let computerScore = 0
+
+      //returns a random move from computer
+      function computerPlay(){
+         
+          let randomNum = Math.random()
+
+          if (randomNum < 0.33){
+              return "rock"
+          }
+
+          else if (randomNum > 0.33 && randomNum < 0.66){
+              return "paper"
+          }
+
+          else{
+              return "scissor"
+          }
+
+      }
+
+      //takes player and computer selections as parameters and returns the result and increments score
+      function playRound(playerSelection, computerSelection){
+
+          playerSelection = playerSelection.toLowerCase()
+
+          if(playerSelection == "rock" && computerSelection == "paper") {
+            computerScore++
+            return "You lose! Paper beats rock"
+            }
+
+          else if(playerSelection == "rock" && computerSelection == "scissor") {
+            playerScore++
+            return "You win! Rock beats scissor"
+            }
+
+
+          else if(playerSelection == "paper" && computerSelection == "rock"){
+            playerScore++
+            return "You win! Paper beats rock"
+            } 
+
+          else if(playerSelection == "paper" && computerSelection == "scissor") {
+            computerScore++
+            return "You lose! Scissor beats paper"
+            }
+
+          else if(playerSelection == "scissor" && computerSelection == "rock") {
+            computerScore++
+            return "You lose! Rock beats paper"
+          }
+
+          else if(playerSelection == "scissor" && computerSelection == "paper") {
+            playerScore++
+            return "You win! Scissor beats paper"
+          }
+
+          else return "It's a tie!"
+
+      }
+
+      //declares the winner after 5 rounds of play
+      function game(){
+          playerScore = 0
+          computerScore = 0
+          let playerSelection
+          let i
+
+          for(i=0; i<5; i++){
+              
+              playerSelection = prompt("Choose one of rock/paper/scissor")
+
+              let result = playRound(playerSelection, computerPlay())
+
+              console.log(result)
+
+               }
+            
+            
+            if(playerScore > computerScore){
+                console.log("Winner Winner Chicken Dinner!")
+            }
+
+            else if(playerScore < computerScore){
+                console.log("You lose ;(")
+            }
+
+            else{
+                console.log("Match tied!")
+            }
+
+            console.log("Final score: player: " + playerScore + " computer: " + computerScore)
+
+      }     
+
+    game()
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+This is a classic rock/paper/scissor game written in javascript. for now it only runs on console but a website with html and css will be developed later
